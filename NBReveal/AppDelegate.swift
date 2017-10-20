@@ -15,8 +15,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Override point for customization asfter application launch.
+        setupRootViewController()
         return true
+    }
+    
+    func setupRootViewController() {
+        let revealViewController = NBRevealViewController()
+        revealViewController.swipeMargin = {
+            
+            return revealViewController.view.frame.size.width/2
+        }
+        let back = UIViewController()
+        back.view.backgroundColor = .green
+        let front = UIViewController()
+        front.view.backgroundColor = .yellow
+        revealViewController.setup(withBackController: back, withFrontController: front)
+        self.window?.rootViewController = revealViewController
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

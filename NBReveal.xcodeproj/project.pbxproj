@@ -12,6 +12,8 @@
 		314A9EE41F99EDAA00E4DF5E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 314A9EE21F99EDAA00E4DF5E /* Main.storyboard */; };
 		314A9EE61F99EDAA00E4DF5E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 314A9EE51F99EDAA00E4DF5E /* Assets.xcassets */; };
 		314A9EE91F99EDAA00E4DF5E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 314A9EE71F99EDAA00E4DF5E /* LaunchScreen.storyboard */; };
+		314A9EF21F99EDC900E4DF5E /* NBRevealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314A9EF01F99EDC900E4DF5E /* NBRevealViewController.swift */; };
+		314A9EF31F99EDC900E4DF5E /* NBRevealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 314A9EF11F99EDC900E4DF5E /* NBRevealViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		314A9EE51F99EDAA00E4DF5E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		314A9EE81F99EDAA00E4DF5E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		314A9EEA1F99EDAA00E4DF5E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		314A9EF01F99EDC900E4DF5E /* NBRevealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBRevealViewController.swift; sourceTree = "<group>"; };
+		314A9EF11F99EDC900E4DF5E /* NBRevealViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NBRevealViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				314A9EE51F99EDAA00E4DF5E /* Assets.xcassets */,
 				314A9EE71F99EDAA00E4DF5E /* LaunchScreen.storyboard */,
 				314A9EEA1F99EDAA00E4DF5E /* Info.plist */,
+				314A9EF01F99EDC900E4DF5E /* NBRevealViewController.swift */,
+				314A9EF11F99EDC900E4DF5E /* NBRevealViewController.xib */,
 			);
 			path = NBReveal;
 			sourceTree = "<group>";
@@ -124,6 +130,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				314A9EE91F99EDAA00E4DF5E /* LaunchScreen.storyboard in Resources */,
+				314A9EF31F99EDC900E4DF5E /* NBRevealViewController.xib in Resources */,
 				314A9EE61F99EDAA00E4DF5E /* Assets.xcassets in Resources */,
 				314A9EE41F99EDAA00E4DF5E /* Main.storyboard in Resources */,
 			);
@@ -137,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				314A9EE11F99EDAA00E4DF5E /* ViewController.swift in Sources */,
+				314A9EF21F99EDC900E4DF5E /* NBRevealViewController.swift in Sources */,
 				314A9EDF1F99EDAA00E4DF5E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,7 @@ import UIKit
 class NBRevealViewController: UIViewController {
     weak var backController: UIViewController!
     weak var frontController: UIViewController!
-    
+
     var transparentGestureView: UIView!
     var leftPaddingConstraint: NSLayoutConstraint!
     var transparentLeftPaddingConstraint: NSLayoutConstraint!
@@ -19,8 +19,31 @@ class NBRevealViewController: UIViewController {
     var swipeMargin:(()-> CGFloat)?
     var transformFrontView: CGAffineTransform?
     
+    private var _shouldAddShadows: Bool?
+    var shouldAddShadows:Bool? {
+        get {
+            if let addshadows = _shouldAddShadows {
+                return addshadows
+            } else {
+                return false
+            }
+        }
+        
+        set {
+            _shouldAddShadows = newValue
+            if _shouldAddShadows! == true {
+                self.frontController?.view.layer.shadowColor = UIColor.black.cgColor
+                self.frontController?.view.layer.shadowPath = UIBezierPath(rect: self.frontController.view.frame).cgPath
+                self.frontController?.view.layer.shadowOpacity = 0.5
+                self.frontController?.view.layer.shadowOffset = CGSize.zero
+            }
+        }
+    }
+    
+    private var _shouldPan: Bool?
     var shouldPan: Bool? {
         set {
+            _shouldPan = newValue
             if (newValue!) {
                 addPanGesture()
             } else {
@@ -29,14 +52,14 @@ class NBRevealViewController: UIViewController {
         }
         
         get {
-            return false
-            if let s = self.shouldPan {
+            if let s = _shouldPan {
                 return s
             } else {
                 return false
             }
         }
     }
+    
     var animationDuration:TimeInterval = 0.5
     
     func setup(withBackController backController:UIViewController, withFrontController frontController:UIViewController) {
@@ -134,11 +157,17 @@ class NBRevealViewController: UIViewController {
                 if let transform = self.transformFrontView {
                     self.frontController.view.transform = transform
                 }
+                if (self.shouldAddShadows ?? false) {
+                    self.frontController.view.layer.shadowOpacity = 0.5
+                }
             })
         } else {
             self.transparentGestureView.alpha = 1
             if let transform = self.transformFrontView {
                 self.frontController.view.transform = transform
+            }
+            if (self.shouldAddShadows ?? false) {
+                self.frontController.view.layer.shadowOpacity = 0.5
             }
             self.view.setNeedsLayout()
         }
@@ -157,11 +186,17 @@ class NBRevealViewController: UIViewController {
                 self.view.layoutIfNeeded()
                 self.transparentGestureView.alpha = 0.1
                 self.frontController.view.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+                if (self.shouldAddShadows ?? false) {
+                    self.frontController.view.layer.shadowOpacity = 0.0
+                }
             })
         } else {
             self.view.setNeedsLayout()
             self.transparentGestureView.alpha = 0.1
             self.frontController.view.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+            if (self.shouldAddShadows ?? false) {
+                self.frontController.view.layer.shadowOpacity = 0.0
+            }
         }
     }
 }

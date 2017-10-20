@@ -17,6 +17,8 @@ class NBRevealViewController: UIViewController {
     var transparentLeftPaddingConstraint: NSLayoutConstraint!
     
     var swipeMargin:(()-> CGFloat)?
+    var transformFrontView: CGAffineTransform?
+    
     var shouldPan: Bool? {
         set {
             if (newValue!) {
@@ -28,7 +30,7 @@ class NBRevealViewController: UIViewController {
         
         get {
             return false
-            if let s = shouldPan {
+            if let s = self.shouldPan {
                 return s
             } else {
                 return false
@@ -129,9 +131,15 @@ class NBRevealViewController: UIViewController {
             UIView.animate(withDuration: animationDuration, animations: {
                 self.view.layoutIfNeeded()
                 self.transparentGestureView.alpha = 1
+                if let transform = self.transformFrontView {
+                    self.frontController.view.transform = transform
+                }
             })
         } else {
             self.transparentGestureView.alpha = 1
+            if let transform = self.transformFrontView {
+                self.frontController.view.transform = transform
+            }
             self.view.setNeedsLayout()
         }
     }
@@ -148,10 +156,12 @@ class NBRevealViewController: UIViewController {
             UIView.animate(withDuration: animationDuration, animations: {
                 self.view.layoutIfNeeded()
                 self.transparentGestureView.alpha = 0.1
+                self.frontController.view.transform = CGAffineTransform.init(scaleX: 1, y: 1)
             })
         } else {
             self.view.setNeedsLayout()
             self.transparentGestureView.alpha = 0.1
+            self.frontController.view.transform = CGAffineTransform.init(scaleX: 1, y: 1)
         }
     }
 }

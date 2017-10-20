@@ -22,15 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func setupRootViewController() {
         let revealViewController = NBRevealViewController()
-        revealViewController.swipeMargin = {
-            
-            return revealViewController.view.frame.size.width/2
-        }
+//        revealViewController.swipeMargin = {
+//            
+//            return revealViewController.view.frame.size.width/2
+//        }
         let back = UIViewController()
         back.view.backgroundColor = .green
         let front = UIViewController()
         front.view.backgroundColor = .yellow
         revealViewController.setup(withBackController: back, withFrontController: front)
+        revealViewController.transformFrontView = CGAffineTransform.init(scaleX: 0.8, y: 0.8)
         self.window?.rootViewController = revealViewController
     }
 

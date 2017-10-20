@@ -63,6 +63,7 @@ class NBRevealViewController: UIViewController {
             addSwipeGesture()
         }
         transparentGestureView.backgroundColor = .red
+        transparentGestureView.alpha = 0.3
     }
     
     override func viewDidLoad() {
@@ -122,12 +123,15 @@ class NBRevealViewController: UIViewController {
         }
         let position = self.swipeMargin?() ?? self.view.frame.size.width - 100
         self.leftPaddingConstraint.constant = position
-        self.transparentLeftPaddingConstraint.constant = position
+        self.transparentLeftPaddingConstraint.constant = position - transparentGestureView.frame.size.width
+        
         if (shouldAnimate) {
             UIView.animate(withDuration: animationDuration, animations: {
                 self.view.layoutIfNeeded()
+                self.transparentGestureView.alpha = 1
             })
         } else {
+            self.transparentGestureView.alpha = 1
             self.view.setNeedsLayout()
         }
     }
@@ -139,12 +143,15 @@ class NBRevealViewController: UIViewController {
         
         self.leftPaddingConstraint.constant = 0
         self.transparentLeftPaddingConstraint.constant = 0
+        
         if (shouldAnimate) {
             UIView.animate(withDuration: animationDuration, animations: {
                 self.view.layoutIfNeeded()
+                self.transparentGestureView.alpha = 0.1
             })
         } else {
             self.view.setNeedsLayout()
+            self.transparentGestureView.alpha = 0.1
         }
     }
 }
